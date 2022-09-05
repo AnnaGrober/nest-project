@@ -24,6 +24,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
+      - redis
       - db
     env_file: .env
     environment:
@@ -36,9 +37,14 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - API_HOST=${API_HOST}
   redis:
-    image: 'redis:alpine'
-    ports:
-      - 6379:6379
+    image: redis
+    expose:
+      - 6379
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
 volumes:
   mysql:
     driver: local

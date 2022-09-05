@@ -14,6 +14,7 @@ export default class FileService {
     ) {
     }
 
+
     public sendFile(@UploadedFile() file: Express.Multer.File, userId) {
         if (this.convert(file) && file !== undefined) {
             const fileToSave = new File();

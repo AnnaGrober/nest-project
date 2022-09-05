@@ -3,3 +3,4 @@ dist
 .git
 mysql
 uploads
+/.idea/
