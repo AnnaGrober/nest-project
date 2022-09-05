@@ -1,13 +1,23 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {Column, CreateDateColumn, Entity, InsertEvent, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
+import {createParamDecorator, ExecutionContext} from "@nestjs/common";
 
 @Entity()
-export class Files {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class File {
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  userId: number;
+    @Column()
+    userId: number;
 
-  @Column()
-  name: string;
+    @Column()
+    name: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
+
+
+
 }
