@@ -28,9 +28,9 @@ export default class FileController {
             },
         }),
     )
-    uploadFile(@Request() request, @UploadedFile() file: Express.Multer.File) {
+     uploadFile(@Request() request, @UploadedFile() file: Express.Multer.File) {
         const user = request.user;
-        return this.sendFileService.sendFile(file, user.id);
+        return  this.sendFileService.sendFile(file, user.id);
     }
 
     @Get('my-files')
